@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import InteractiveBackground from "./components/landing/InteractiveBackground";
-import { LanguageProvider } from "./components/landing/LanguageContext";
+import InteractiveBackground from "./components/layout/InteractiveBackground";
+import { LanguageProvider } from "./components/providers/LanguageContext";
+import Header from "./components/layout/Header";
+import Footer from "./components/layout/Footer";
 import "./globals.css";
+import LenisProvider from "./components/providers/LenisProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,11 +28,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="relative min-h-screen overflow-x-hidden bg-black text-white antialiased">
-        <LanguageProvider>
-          <InteractiveBackground />
-          <div className="relative z-10">{children}</div>
-        </LanguageProvider>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} relative flex min-h-screen flex-col overflow-x-hidden text-white antialiased`}
+      >
+        <LenisProvider>
+          <LanguageProvider>
+            <InteractiveBackground />
+            <Header />
+
+            <main className="relative z-10 flex flex-1 flex-col">
+              {children}
+            </main>
+
+            <Footer />
+          </LanguageProvider>
+        </LenisProvider>
       </body>
     </html>
   );

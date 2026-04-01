@@ -1,7 +1,8 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { useLanguage } from "./LanguageContext";
+import { useLanguage } from "../providers/LanguageContext";
+import { Reveal } from "@/lib/Animation/Reveal";
 
 type SliderRowProps = {
   label: string;
@@ -27,9 +28,9 @@ function SliderRow({
   return (
     <div className="border-b border-white/10 pb-8 last:border-b-0 last:pb-0">
       <div className="flex items-center justify-between gap-4">
-        <span className="text-base font-medium text-white/85">{label}</span>
+        <span className="type-body font-medium text-white/85">{label}</span>
 
-        <span dir="ltr" className="text-lg font-bold text-[#FFC100]">
+        <span dir="ltr" className="type-card-title font-bold text-[#FFC100]">
           {prefix}
           {value.toLocaleString()}
           {suffix}
@@ -46,7 +47,7 @@ function SliderRow({
         className="mt-5 h-3 w-full cursor-pointer appearance-none rounded-full bg-white/10 accent-[#FFC100] [transform:scaleY(1.35)]"
       />
 
-      <div className="mt-3 flex items-center justify-between text-sm text-white/35">
+      <div className="type-meta mt-3 flex items-center justify-between text-white/35">
         <span dir="ltr">
           {prefix}
           {min.toLocaleString()}
@@ -82,29 +83,42 @@ export default function Calculator() {
   });
 
   return (
-    <section id="calculator" className="border-b border-white/10 bg-transparent">
+    <Reveal
+      as="section"
+      id="calculator"
+      preset="section"
+      className="border-b border-white/10 bg-transparent"
+    >
       <div className="mx-auto max-w-6xl px-6 py-14 md:py-16">
-        <div
+        <Reveal
+          as="div"
           dir={isArabic ? "rtl" : "ltr"}
           className="flex flex-col items-center text-center"
         >
-          <h2 className="text-4xl font-bold leading-[0.95] text-white sm:text-5xl lg:text-6xl">
+          <Reveal as="h2" preset="text" className="type-display font-bold text-white">
             <span>{t.home.calculator.titleStart} </span>
             <span className="text-[#FFC100] [text-shadow:0_0_12px_rgba(255,193,0,0.28),0_0_30px_rgba(255,193,0,0.14)]">
               {t.home.calculator.titleAccent}
             </span>
-          </h2>
+          </Reveal>
 
-          <div className="mt-6 inline-flex rounded-full border border-[#FFC100]/30 bg-[#FFC100]/10 px-5 py-2 text-sm font-semibold text-[#FFC100]">
+          <Reveal
+            as="div"
+            preset="soft"
+            delay={0.05}
+            className="type-label mt-6 inline-flex rounded-full border border-[#FFC100]/30 bg-[#FFC100]/10 px-5 py-2 font-semibold text-[#FFC100]"
+          >
             {t.home.calculator.commissionBadge}
-          </div>
-        </div>
+          </Reveal>
+        </Reveal>
 
-        <div
+        <Reveal
+          as="div"
+          delay={0.08}
           dir={isArabic ? "rtl" : "ltr"}
           className="mt-12 grid gap-12 md:grid-cols-2 md:gap-16"
         >
-          <div className="grid gap-8">
+          <Reveal as="div" className="grid gap-8">
             <SliderRow
               label={t.home.calculator.dailyVolume}
               value={dailyVolume}
@@ -123,12 +137,12 @@ export default function Calculator() {
               step={1}
               onChange={setWorkingDays}
             />
-          </div>
+          </Reveal>
 
-          <div className="flex flex-col justify-center">
+          <Reveal as="div" className="flex flex-col justify-center">
             <p
               className={[
-                "text-center text-sm uppercase tracking-[0.25em] text-white/45 md:text-left",
+                "type-meta text-center uppercase tracking-[0.25em] text-white/45 md:text-left",
                 isArabic ? "md:text-right" : "",
               ].join(" ")}
             >
@@ -136,12 +150,12 @@ export default function Calculator() {
             </p>
 
             <div className="mt-10">
-              <div className="text-base text-white/60">
+              <div className="type-body text-white/60">
                 {t.home.calculator.monthlyIncome}
               </div>
               <div
                 dir="ltr"
-                className="mt-2 text-6xl font-bold text-[#FFC100] [text-shadow:0_0_12px_rgba(255,193,0,0.26),0_0_30px_rgba(255,193,0,0.14)] sm:text-7xl"
+                className="type-metric mt-2 font-bold text-[#FFC100] [text-shadow:0_0_12px_rgba(255,193,0,0.26),0_0_30px_rgba(255,193,0,0.14)]"
               >
                 ${money.format(monthlyIncome)}
               </div>
@@ -150,16 +164,16 @@ export default function Calculator() {
             <div className="mt-10 h-px w-full bg-white/10" />
 
             <div className="mt-8">
-              <div className="text-base text-white/60">
+              <div className="type-body text-white/60">
                 {t.home.calculator.dailyIncome}
               </div>
-              <div dir="ltr" className="mt-2 text-5xl font-bold text-white sm:text-6xl">
+              <div dir="ltr" className="type-metric-secondary mt-2 font-bold text-white">
                 ${money.format(dailyIncome)}
               </div>
             </div>
-          </div>
-        </div>
+          </Reveal>
+        </Reveal>
       </div>
-    </section>
+    </Reveal>
   );
 }

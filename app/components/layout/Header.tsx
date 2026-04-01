@@ -2,24 +2,19 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useLanguage } from "./LanguageContext";
+import { useLanguage } from "../providers/LanguageContext";
 import { Language } from "@/lib/translations";
 
 const languages: { label: string; value: Language }[] = [
   { label: "EN", value: "en" },
-  { label: "FR", value: "fr" },
   { label: "AR", value: "ar" },
 ];
 
 export default function Header() {
-  const pathname = usePathname();
   const { language, setLanguage, t } = useLanguage();
 
-  const aboutHref = pathname === "/" ? "#about" : "/#about";
-
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10  backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-white/10 backdrop-blur">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <Link href="/" className="shrink-0">
           <Image
@@ -33,26 +28,33 @@ export default function Header() {
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
-          <a
-            href={"/"}
-            className="text-sm font-medium text-white/80 transition hover:text-[#FFC100]"
+          <Link
+            href="/"
+            className="type-label font-medium text-white/80 transition hover:text-[#FFC100]"
           >
-            {t.nav.aboutUs}
-          </a>
+            {t.nav.home}
+          </Link>
 
           <Link
             href="/agent"
-            className="text-sm font-medium text-white/80 transition hover:text-[#FFC100]"
+            className="type-label font-medium text-white/80 transition hover:text-[#FFC100]"
           >
             {t.nav.becomeAgent}
           </Link>
 
           <Link
             href="/partner"
-            className="text-sm font-medium text-white/80 transition hover:text-[#FFC100]"
+            className="type-label font-medium text-white/80 transition hover:text-[#FFC100]"
           >
             {t.nav.becomePartner}
           </Link>
+
+          <a
+            href={"/aboutus"}
+            className="type-label font-medium text-white/80 transition hover:text-[#FFC100]"
+          >
+            {t.nav.aboutUs}
+          </a>
         </nav>
 
         <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 p-1">
@@ -65,7 +67,7 @@ export default function Header() {
                 type="button"
                 onClick={() => setLanguage(item.value)}
                 className={[
-                  "rounded-full px-3 py-1.5 text-xs font-semibold transition",
+                  "type-meta rounded-full px-3 py-1.5 font-semibold transition",
                   isActive
                     ? "bg-[#FFC100] text-black"
                     : "text-white/75 hover:text-white",

@@ -1,8 +1,9 @@
-export type Language = "en" | "fr" | "ar";
+export type Language = "en" | "ar";
 
 export const translations = {
   en: {
     nav: {
+      home: "Home",
       aboutUs: "About Us",
       becomeAgent: "Become an Agent",
       becomePartner: "Become a Partner",
@@ -15,7 +16,7 @@ export const translations = {
     home: {
       hero: {
         badge: "Become an agent. Grow with us.",
-        title: "Build a strong betting business with a fast, direct partner flow",
+        title: "The fastest growing platform in the betting world",
         description:
           "Premium support, clear onboarding, and a conversion-focused system designed to help agents and partners start fast and scale with confidence.",
         contactUs: "Contact Us",
@@ -31,8 +32,8 @@ export const translations = {
       },
 
       calculator: {
-        titleStart: "ESTIMATE YOUR",
-        titleAccent: "INCOME",
+        titleStart: "ESTIMATE YOUR INCOME ",
+        titleAccent: "WITH US",
         commissionBadge: "10% agent commission",
         dailyVolume: "Daily volume",
         workingDays: "Working days per month",
@@ -67,7 +68,7 @@ export const translations = {
         badge: "Register",
         title: "Ready to start working with us?",
         description:
-          "Reach out directly and we will guide you through the next step. This section is the main conversion point for the homepage, agent page, and partner page.",
+          "Reach out directly and we will guide you through the next step. your future is waiting, what are you waiting for?",
         telegram: "Contact on Telegram",
         whatsapp: "Contact on WhatsApp",
         step1Title: "Send your request",
@@ -197,204 +198,9 @@ export const translations = {
     },
   },
 
-  fr: {
-    nav: {
-      aboutUs: "À propos",
-      becomeAgent: "Devenir Agent",
-      becomePartner: "Devenir Partenaire",
-    },
-
-    footer: {
-      copyright: "Copyright © 2026, Tous droits réservés",
-    },
-
-    home: {
-      hero: {
-        badge: "Devenez agent. Évoluez avec nous.",
-        title: "Construisez une activité solide dans les paris avec un parcours partenaire rapide et direct",
-        description:
-          "Un support premium, un onboarding clair et un système orienté conversion, conçu pour aider les agents et les partenaires à démarrer rapidement et à se développer avec confiance.",
-        contactUs: "Contactez-nous",
-        becomeAgent: "Devenir Agent",
-        partnerProgram: "Programme Partenaire",
-        premiumGrowthFlow: "Flux de croissance premium",
-        ourSite: "Notre site",
-        support: "Support",
-        onboarding: "Onboarding",
-        managerAccess: "Accès manager",
-        fast: "Rapide",
-        direct: "Direct",
-      },
-
-      calculator: {
-        titleStart: "ESTIMEZ VOS",
-        titleAccent: "REVENUS",
-        commissionBadge: "Commission agent de 10%",
-        dailyVolume: "Volume quotidien",
-        workingDays: "Jours de travail par mois",
-        estimatedResult: "Résultat estimé",
-        monthlyIncome: "Revenu mensuel",
-        dailyIncome: "Revenu quotidien",
-      },
-
-      benefits: {
-        title: "Avantages Exclusifs",
-        subtitle:
-          "Une configuration pratique conçue pour un démarrage rapide et une croissance à long terme.",
-        quickStart: {
-          title: "Démarrage Rapide",
-          text: "Lancez vos opérations rapidement avec un onboarding simple et des étapes claires.",
-        },
-        marketingKit: {
-          title: "Kit Marketing",
-          text: "Utilisez des visuels et scripts prêts à l’emploi pour attirer un trafic de qualité.",
-        },
-        flexiblePayments: {
-          title: "Paiements Flexibles",
-          text: "Travaillez avec des méthodes de transfert pratiques pour votre marché local.",
-        },
-        privateAdvisor: {
-          title: "Conseiller Privé",
-          text: "Bénéficiez d’un support direct d’un manager personnel pour les tâches quotidiennes.",
-        },
-      },
-
-      register: {
-        badge: "Inscription",
-        title: "Prêt à commencer à travailler avec nous ?",
-        description:
-          "Contactez-nous directement et nous vous guiderons vers la prochaine étape. Cette section est le point de conversion principal pour la page d’accueil, la page agent et la page partenaire.",
-        telegram: "Contacter sur Telegram",
-        whatsapp: "Contacter sur WhatsApp",
-        step1Title: "Envoyez votre demande",
-        step1Text: "Contactez-nous via le canal direct qui vous convient le mieux.",
-        step2Title: "Recevez vos détails d’onboarding",
-        step2Text: "Nous examinons votre demande et expliquons clairement les prochaines étapes.",
-        step3Title: "Commencez avec le bon flux",
-        step3Text: "Avancez avec un support direct et un parcours simple et efficace.",
-      },
-    },
-
-    agent: {
-      hero: {
-        badge: "Devenir Agent",
-        title: "Gagnez des commissions quotidiennes avec un modèle agent rapide et direct",
-        description:
-          "Démarrez rapidement, travaillez avec une structure claire et développez-vous grâce à une configuration pratique conçue pour une activité quotidienne réelle.",
-        startNow: "Commencer",
-        estimateIncome: "Estimer vos revenus",
-        programLabel: "Programme Agent",
-        flowLabel: "Flux de commissions quotidiennes",
-        model: "Modèle",
-        modelValue: "Installation rapide",
-        income: "Revenu",
-        incomeValue: "Quotidien",
-      },
-
-      intro: {
-        title: "Une manière simple et directe de commencer à gagner",
-        text: "Cette configuration est conçue pour les agents qui veulent un onboarding rapide, des opérations claires et un potentiel constant de commissions quotidiennes.",
-      },
-
-      benefits: {
-        title: "Avantages Exclusifs pour les Agents",
-        subtitle:
-          "Conçu autour de l’action, de la rapidité et du type de support qui vous aide à démarrer avec confiance.",
-        dailyCommissions: {
-          title: "Commissions Quotidiennes",
-          text: "Travaillez avec un flux direct conçu pour générer un revenu quotidien clair et rapide à partir d’une activité réelle.",
-        },
-        transferAgentModel: {
-          title: "Modèle d’Agent de Transfert",
-          text: "Travaillez avec un modèle pratique simple qui aide les utilisateurs à alimenter et gérer leur activité en toute fluidité.",
-        },
-        essentialService: {
-          title: "Service Essentiel",
-          text: "Offrez un service dont les gens ont réellement besoin, ce qui facilite le lancement, la confiance et la croissance.",
-        },
-        topAgentPotential: {
-          title: "Potentiel de Top Agent",
-          text: "De bonnes performances ouvrent la porte à plus de visibilité, plus de support et une croissance durable.",
-        },
-      },
-
-      support: {
-        badge: "Support 24/7",
-        title: "Support dédié d’un manager dès le premier jour",
-        text: "Obtenez une assistance directe pour l’installation, les opérations et la croissance afin de vous concentrer sur l’exécution sans friction.",
-        registerNow: "S’inscrire maintenant",
-        instantResponse: {
-          title: "Réponse Immédiate",
-          text: "Obtenez rapidement de l’aide lorsque vous avez besoin de clarté opérationnelle.",
-        },
-        operationalGuidance: {
-          title: "Accompagnement Opérationnel",
-          text: "Avancez étape par étape avec un support direct pendant la configuration et l’exécution.",
-        },
-        growthCoaching: {
-          title: "Coaching de Croissance",
-          text: "Développez-vous avec une structure plus claire et de meilleures décisions au quotidien.",
-        },
-      },
-
-      final: {
-        badge: "Dernière Étape",
-        title: "Prêt à devenir agent ?",
-        text: "Passez à l’étape d’inscription et commencez le processus avec un support direct.",
-        button: "Aller à l’inscription",
-      },
-    },
-
-    partner: {
-      hero: {
-        badge: "DEVENEZ NOTRE PARTENAIRE",
-        title: "Construisez un revenu à long terme en devenant aussi affilié.",
-        description:
-          "Les opérations de transfert apportent des gains immédiats, tandis que la croissance affiliée vous aide à bâtir une activité qui se développe d’elle-même.",
-        startNow: "Commencer",
-        growthPotential: "VOTRE POTENTIEL DE CROISSANCE D’AFFILIÉ",
-        growthTitle: "Un parcours de la première semaine à un revenu mensuel stable",
-        month1: "Mois 1",
-        month2: "Mois 2",
-        month3: "Mois 3",
-        month6: "Mois 6+",
-        lifetimeCommissions: "Commissions à vie",
-        weeklyPayouts: "Paiements hebdomadaires",
-        transferAffiliate: "Effet transfert + affiliation",
-      },
-
-      how: {
-        title: "Comment ? Partagez votre lien ou code de parrainage",
-      },
-
-      benefits: {
-        lifetimeClientBase: {
-          title: "Base Client à Vie",
-          text: "Chaque joueur qui s’inscrit par votre intermédiaire devient une partie de votre base client à long terme.",
-        },
-        lifetimeCommissions: {
-          title: "Commissions à Vie",
-          text: "Gagnez des commissions récurrentes grâce aux joueurs actifs et construisez une source de revenus plus solide à long terme.",
-        },
-        passiveWeeklyIncome: {
-          title: "Revenu Hebdomadaire Passif",
-          text: "Les paiements affiliés peuvent être retirés chaque semaine, ce qui aide à créer un flux passif plus stable.",
-        },
-        compoundingGrowth: {
-          title: "Croissance Composée",
-          text: "Transformez chaque inscription en source de revenu durable et évoluez plus vite lorsque l’activité se cumule dans le temps.",
-        },
-      },
-
-      final: {
-        title: "Multipliez vos sources de revenus. Transformez votre portefeuille clients en actif.",
-        button: "Commencer",
-      },
-    },
-  },
-
   ar: {
     nav: {
+      home: "الرئيسية",
       aboutUs: "من نحن",
       becomeAgent: "كن وكيلاً",
       becomePartner: "كن شريكاً",
@@ -407,7 +213,7 @@ export const translations = {
     home: {
       hero: {
         badge: "كن وكيلاً. وانمُ معنا.",
-        title: "ابنِ عملاً قوياً في مجال المراهنات عبر مسار شراكة سريع ومباشر",
+        title: "المنصة الأسرع نموا في عالم  الرهانات",
         description:
           "دعم احترافي، وانطلاقة واضحة، ونظام موجه للتحويلات، مصمم لمساعدة الوكلاء والشركاء على البدء بسرعة والتوسع بثقة.",
         contactUs: "اتصل بنا",
@@ -459,7 +265,7 @@ export const translations = {
         badge: "التسجيل",
         title: "هل أنت مستعد للبدء معنا؟",
         description:
-          "تواصل معنا مباشرة وسنرشدك إلى الخطوة التالية. هذا القسم هو نقطة التحويل الرئيسية للصفحة الرئيسية وصفحة الوكيل وصفحة الشريك.",
+          "تواصل معنا مباشرة وسنرشدك إلى الخطوة التالية. مستقبلك في الأنتظار, ما الذي تنتظره أنت؟.",
         telegram: "تواصل عبر تيليجرام",
         whatsapp: "تواصل عبر واتساب",
         step1Title: "أرسل طلبك",

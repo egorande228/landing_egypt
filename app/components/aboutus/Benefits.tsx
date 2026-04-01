@@ -1,19 +1,20 @@
 "use client";
 
 import Image from "next/image";
-import { useLanguage } from "./LanguageContext";
+import { useLanguage } from "../providers/LanguageContext";
+import { Reveal } from "@/lib/Animation/Reveal";
 
 export default function Benefits() {
   const { t, isArabic } = useLanguage();
 
   const benefits = [
     {
-      image: "/bolt2.png",
+      image: "/bolt.png",
       title: t.home.benefits.quickStart.title,
       text: t.home.benefits.quickStart.text,
     },
     {
-      image: "/marketing3.png",
+      image: "/marketing1.png",
       title: t.home.benefits.marketingKit.title,
       text: t.home.benefits.marketingKit.text,
     },
@@ -30,25 +31,33 @@ export default function Benefits() {
   ];
 
   return (
-    <section id="benefits" className="border-b border-white/10 bg-transparent">
+    <Reveal
+      as="section"
+      id="benefits"
+      preset="section"
+      className="border-b border-white/10 bg-transparent"
+    >
       <div className="mx-auto max-w-7xl px-6 py-16 md:py-20">
-        <div
+        <Reveal
+          as="div"
           dir={isArabic ? "rtl" : "ltr"}
           className={["max-w-3xl", isArabic ? "text-right" : ""].join(" ")}
         >
-          <h2 className="text-4xl font-bold leading-tight text-white sm:text-5xl">
+          <Reveal as="h2" preset="text" className="type-heading font-bold text-white">
             {t.home.benefits.title}
-          </h2>
+          </Reveal>
 
-          <p className="mt-5 text-lg leading-8 text-white/72">
+          <Reveal as="p" preset="text" delay={0.04} className="type-body-lg mt-5 text-white/72">
             {t.home.benefits.subtitle}
-          </p>
-        </div>
+          </Reveal>
+        </Reveal>
 
-        <div className="mt-10 grid gap-5 md:grid-cols-2">
+        <Reveal as="div" delay={0.08} stagger={0.08} className="mt-10 grid gap-5 md:grid-cols-2">
           {benefits.map((item) => (
-            <div
+            <Reveal
               key={item.title}
+              as="div"
+              preset="card"
               className="landing-surface landing-hover rounded-[28px] px-8 py-10"
             >
               <div className="flex flex-col items-center text-center">
@@ -61,18 +70,18 @@ export default function Benefits() {
                   />
                 </div>
 
-                <h3 className="mt-6 text-2xl font-bold text-white sm:text-3xl">
+                <h3 className="type-card-title mt-6 font-bold text-white">
                   {item.title}
                 </h3>
 
-                <p className="mt-5 max-w-[620px] text-lg leading-8 text-white/72">
+                <p className="type-body-lg mt-5 max-w-[620px] text-white/72">
                   {item.text}
                 </p>
               </div>
-            </div>
+            </Reveal>
           ))}
-        </div>
+        </Reveal>
       </div>
-    </section>
+    </Reveal>
   );
 }

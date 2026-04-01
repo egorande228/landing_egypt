@@ -24,15 +24,14 @@ const LanguageContext = createContext<LanguageContextValue | undefined>(
 const STORAGE_KEY = "landing-language";
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguageState] = useState<Language>("en");
-
-  useEffect(() => {
-    const saved = window.localStorage.getItem(STORAGE_KEY) as Language | null;
-
-    if (saved === "en" || saved === "fr" || saved === "ar") {
-      setLanguageState(saved);
+  const [language, setLanguageState] = useState<Language>(() => {
+    if (typeof window === "undefined") {
+      return "en";
     }
-  }, []);
+
+    const saved = window.localStorage.getItem(STORAGE_KEY) as Language | null;
+    return saved === "en" || saved === "ar" ? saved : "en";
+  });
 
   useEffect(() => {
     window.localStorage.setItem(STORAGE_KEY, language);

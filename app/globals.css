@@ -72,11 +72,20 @@ select {
 }
 
 .landing-hover {
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
+  will-change: transform, box-shadow, border-color;
 }
 
 .landing-hover:hover {
-  transform: translateY(-2px);
+  transform: translateY(-6px) scale(1.01);
+  border-color: rgba(255, 193, 0, 0.2);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 28px 72px rgba(0, 0, 0, 0.42);
+}
+
+.landing-hover:active {
+  transform: translateY(-2px) scale(1.005);
 }
 
 .landing-button-primary {
@@ -104,6 +113,66 @@ select {
 
 .landing-section-line {
   border-color: rgba(255, 255, 255, 0.08);
+}
+
+.type-display {
+  font-size: clamp(2.6rem, 4.9vw, 4rem);
+  line-height: 1.02;
+}
+
+.type-heading {
+  font-size: clamp(1.88rem, 3.6vw, 2.88rem);
+  line-height: 1.05;
+}
+
+.type-subheading {
+  font-size: clamp(1.6rem, 2.75vw, 2.34rem);
+  line-height: 1.1;
+}
+
+.type-card-title {
+  font-size: clamp(1.24rem, 1.82vw, 1.72rem);
+  line-height: 1.15;
+}
+
+.type-hero-accent {
+  font-size: clamp(1.38rem, 2.72vw, 2.78rem);
+  line-height: 1;
+}
+
+.type-metric {
+  font-size: clamp(2.82rem, 6.7vw, 4.35rem);
+  line-height: 0.95;
+}
+
+.type-metric-secondary {
+  font-size: clamp(2.34rem, 5.05vw, 3.62rem);
+  line-height: 0.98;
+}
+
+.type-stat {
+  font-size: clamp(1.38rem, 1.94vw, 1.74rem);
+  line-height: 1;
+}
+
+.type-body-lg {
+  font-size: clamp(0.92rem, 1.08vw, 1.04rem);
+  line-height: 1.8;
+}
+
+.type-body {
+  font-size: clamp(0.89rem, 0.96vw, 0.95rem);
+  line-height: 1.7;
+}
+
+.type-label {
+  font-size: 0.8rem;
+  line-height: 1.3;
+}
+
+.type-meta {
+  font-size: 0.7rem;
+  line-height: 1.25;
 }
 
 @keyframes melbetWave {
@@ -330,4 +399,209 @@ select {
   animation: benefitIconFloat 3.2s ease-in-out infinite,
     benefitIconGlow 3.2s ease-in-out infinite;
   will-change: transform, filter;
+}
+
+@keyframes agentSceneFloat {
+  0% {
+    transform: rotateX(16deg) rotateY(-13deg) translateY(0);
+  }
+
+  50% {
+    transform: rotateX(16deg) rotateY(-11deg) translateY(-8px);
+  }
+
+  100% {
+    transform: rotateX(16deg) rotateY(-13deg) translateY(0);
+  }
+}
+
+@keyframes agentNodePulse {
+
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 0 rgba(255, 193, 0, 0.18),
+      0 0 0 12px rgba(255, 193, 0, 0);
+  }
+
+  50% {
+    box-shadow:
+      0 0 0 6px rgba(255, 193, 0, 0.08),
+      0 0 0 18px rgba(255, 193, 0, 0);
+  }
+}
+
+@keyframes agentFlowDeposit {
+  from {
+    stroke-dashoffset: 0;
+  }
+
+  to {
+    stroke-dashoffset: -30;
+  }
+}
+
+@keyframes agentFlowWithdraw {
+  from {
+    stroke-dashoffset: 0;
+  }
+
+  to {
+    stroke-dashoffset: 30;
+  }
+}
+
+.agent-section-world {
+  opacity: 0.24;
+  filter: blur(0.6px);
+}
+
+.agent-scene-wrap {
+  perspective: 1800px;
+  filter: drop-shadow(0 42px 90px rgba(0, 0, 0, 0.42));
+}
+
+.agent-scene-stage {
+  transform-style: preserve-3d;
+  transform: rotateX(16deg) rotateY(-13deg) translateY(0);
+  animation: agentSceneFloat 8s ease-in-out infinite;
+  background:
+    linear-gradient(180deg, rgba(8, 12, 16, 0.96) 0%, rgba(3, 5, 8, 0.96) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.04),
+    0 30px 90px rgba(0, 0, 0, 0.48);
+}
+
+.agent-stage-world {
+  opacity: 0.5;
+  transform: translateZ(6px) scale(1.08);
+}
+
+.agent-stage-glow {
+  background:
+    radial-gradient(circle at 58% 38%, rgba(255, 193, 0, 0.22) 0%, transparent 18%),
+    radial-gradient(circle at 50% 50%, rgba(124, 240, 255, 0.12) 0%, transparent 36%);
+  transform: translateZ(10px);
+}
+
+.agent-stage-vignette {
+  background:
+    radial-gradient(circle at center, transparent 52%, rgba(0, 0, 0, 0.46) 100%);
+}
+
+.agent-scene-flow {
+  stroke-width: 0.55;
+  stroke-linecap: round;
+  stroke-dasharray: 1.5 2.9;
+}
+
+.agent-scene-flow--deposit {
+  stroke: rgba(255, 193, 0, 0.28);
+  animation: agentFlowDeposit 7.8s linear infinite;
+}
+
+.agent-scene-flow--withdraw {
+  stroke: rgba(124, 240, 255, 0.22);
+  animation: agentFlowWithdraw 8.5s linear infinite;
+}
+
+.agent-scene-node {
+  z-index: 20;
+  transform: translate(-50%, -50%) translateZ(50px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.agent-scene-node__chip {
+  overflow: hidden;
+  border-radius: 9999px;
+  background:
+    radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.28) 0%, transparent 28%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.04) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.16),
+    0 18px 30px rgba(0, 0, 0, 0.34);
+}
+
+.agent-scene-node--player .agent-scene-node__chip {
+  width: 2.8rem;
+  height: 2.8rem;
+  animation: agentNodePulse 3.4s ease-in-out infinite;
+}
+
+.agent-scene-node--agent .agent-scene-node__chip {
+  width: 4rem;
+  height: 4rem;
+  border-color: rgba(255, 193, 0, 0.32);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 0 0 8px rgba(255, 193, 0, 0.08),
+    0 26px 40px rgba(0, 0, 0, 0.4);
+}
+
+.agent-scene-node__label {
+  padding: 0.35rem 0.8rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 193, 0, 0.22);
+  background: rgba(0, 0, 0, 0.55);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  backdrop-filter: blur(10px);
+}
+
+.agent-scene-caption {
+  transform: translateX(-50%) translateZ(44px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 18px 38px rgba(0, 0, 0, 0.36);
+}
+
+.agent-scene-legend {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.8rem;
+}
+
+.agent-scene-legend__swatch {
+  width: 1.4rem;
+  height: 0.4rem;
+  border-radius: 9999px;
+}
+
+.agent-scene-legend__swatch--deposit {
+  background: linear-gradient(90deg, rgba(255, 193, 0, 0.24) 0%, #ffc100 100%);
+  box-shadow:
+    0 0 14px rgba(255, 193, 0, 0.26);
+}
+
+.agent-scene-legend__swatch--withdraw {
+  background: linear-gradient(90deg, rgba(124, 240, 255, 0.24) 0%, #7cf0ff 100%);
+  box-shadow:
+    0 0 14px rgba(124, 240, 255, 0.22);
+}
+
+@media (max-width: 767px) {
+  .agent-scene-stage {
+    transform: rotateX(10deg) rotateY(-7deg) translateY(0);
+    animation: none;
+  }
+
+  .agent-scene-node--player .agent-scene-node__chip {
+    width: 2.2rem;
+    height: 2.2rem;
+  }
+
+  .agent-scene-node--agent .agent-scene-node__chip {
+    width: 3.25rem;
+    height: 3.25rem;
+  }
 }
