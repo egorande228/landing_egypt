@@ -13,14 +13,12 @@ export const translations = {
       copyright: "Copyright © 2026, All rights reserved",
     },
 
-    home: {
+    aboutus: {
       hero: {
         badge: "Become an agent. Grow with us.",
         title: "The fastest growing platform in the betting world",
-        description:
-          "Premium support, clear onboarding, and a conversion-focused system designed to help agents and partners start fast and scale with confidence.",
         contactUs: "Contact Us",
-        becomeAgent: "Become an Agent",
+        JoinUs: "Join us",
         partnerProgram: "Partner Program",
         premiumGrowthFlow: "Premium Growth Flow",
         ourSite: "Our Site",
@@ -29,6 +27,7 @@ export const translations = {
         managerAccess: "Manager Access",
         fast: "Fast",
         direct: "Direct",
+        stage: "We're closer than you think !",
       },
 
       calculator: {
@@ -210,14 +209,14 @@ export const translations = {
       copyright: "جميع الحقوق محفوظة © 2026",
     },
 
-    home: {
+    aboutus: {
       hero: {
         badge: "كن وكيلاً. وانمُ معنا.",
         title: "المنصة الأسرع نموا في عالم  الرهانات",
         description:
           "دعم احترافي، وانطلاقة واضحة، ونظام موجه للتحويلات، مصمم لمساعدة الوكلاء والشركاء على البدء بسرعة والتوسع بثقة.",
         contactUs: "اتصل بنا",
-        becomeAgent: "كن وكيلاً",
+        JoinUs: "انضم الينا",
         partnerProgram: "برنامج الشركاء",
         premiumGrowthFlow: "مسار نمو احترافي",
         ourSite: "موقعنا",
@@ -226,6 +225,7 @@ export const translations = {
         managerAccess: "وصول مباشر للمدير",
         fast: "سريع",
         direct: "مباشر",
+        stage: "! نحن أقرب مما تتصور"
       },
 
       calculator: {

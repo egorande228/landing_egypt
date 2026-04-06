@@ -4,6 +4,8 @@ import { useMemo, useState } from "react";
 import { useLanguage } from "../providers/LanguageContext";
 import { Reveal } from "@/lib/Animation/Reveal";
 
+type CalculatorMode = "agent" | "partner";
+
 type SliderRowProps = {
   label: string;
   value: number;
@@ -13,6 +15,13 @@ type SliderRowProps = {
   suffix?: string;
   prefix?: string;
   onChange: (value: number) => void;
+};
+
+type RoleToggleOptionProps = {
+  isActive: boolean;
+  label: string;
+  rangeText: string;
+  onClick: () => void;
 };
 
 function SliderRow({
@@ -63,16 +72,46 @@ function SliderRow({
   );
 }
 
-export default function Calculator() {
-  const [dailyVolume, setDailyVolume] = useState(14300);
-  const [workingDays, setWorkingDays] = useState(11);
+function RoleToggleOption({
+  isActive,
+  label,
+  rangeText,
+  onClick,
+}: RoleToggleOptionProps) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={[
+        "group relative inline-flex h-12 items-center overflow-hidden rounded-full border px-4 transition-all duration-300",
+        isActive
+          ? "border-[#FFC100]/40 bg-[#FFC100] text-black shadow-[0_10px_30px_rgba(255,193,0,0.18)]"
+          : "border-white/12 bg-white/[0.04] text-white hover:border-[#FFC100]/30 hover:bg-[#FFC100]/10 hover:text-[#FFC100]",
+      ].join(" ")}
+    >
+      <span className="type-label whitespace-nowrap font-semibold uppercase tracking-[0.12em]">
+        {label}
+      </span>
 
-  const commissionRate = 0.10;
-  const { t, isArabic } = useLanguage();
+      <span className="type-label ml-0 inline-block max-w-0 overflow-hidden whitespace-nowrap pl-0 font-semibold text-[#FFFFFF] transition-all duration-300 group-hover:max-w-[160px] group-hover:pl-3">
+        {rangeText}
+      </span>
+    </button>
+  );
+}
+
+export default function Calculator() {
+  const [dailyVolume, setDailyVolume] = useState(100);
+  const [workingDays, setWorkingDays] = useState(15);
+  const [mode, setMode] = useState<CalculatorMode>("agent");
+
+  const { t, isArabic, language } = useLanguage();
+
+  const commissionRate = mode === "partner" ? 0.25 : 0.1;
 
   const dailyIncome = useMemo(() => {
     return dailyVolume * commissionRate;
-  }, [dailyVolume]);
+  }, [dailyVolume, commissionRate]);
 
   const monthlyIncome = useMemo(() => {
     return dailyIncome * workingDays;
@@ -81,6 +120,13 @@ export default function Calculator() {
   const money = new Intl.NumberFormat("en-US", {
     maximumFractionDigits: 0,
   });
+
+  const roleLabels = {
+    agent: language === "ar" ? "وكيل" : "Agent",
+    partner: language === "ar" ? "شريك" : "Partner",
+    agentRange: "8% - 10%",
+    partnerRange: "25% - 40%",
+  };
 
   return (
     <Reveal
@@ -96,19 +142,30 @@ export default function Calculator() {
           className="flex flex-col items-center text-center"
         >
           <Reveal as="h2" preset="text" className="type-display font-bold text-white">
-            <span>{t.home.calculator.titleStart} </span>
+            <span>{t.aboutus.calculator.titleStart} </span>
             <span className="text-[#FFC100] [text-shadow:0_0_12px_rgba(255,193,0,0.28),0_0_30px_rgba(255,193,0,0.14)]">
-              {t.home.calculator.titleAccent}
+              {t.aboutus.calculator.titleAccent}
             </span>
           </Reveal>
 
           <Reveal
             as="div"
-            preset="soft"
-            delay={0.05}
-            className="type-label mt-6 inline-flex rounded-full border border-[#FFC100]/30 bg-[#FFC100]/10 px-5 py-2 font-semibold text-[#FFC100]"
+            delay={0.08}
+            className="mt-6 flex flex-wrap items-center justify-center gap-3 rounded-full border border-white/10 bg-white/[0.03] p-2"
           >
-            {t.home.calculator.commissionBadge}
+            <RoleToggleOption
+              isActive={mode === "agent"}
+              label={roleLabels.agent}
+              rangeText={roleLabels.agentRange}
+              onClick={() => setMode("agent")}
+            />
+
+            <RoleToggleOption
+              isActive={mode === "partner"}
+              label={roleLabels.partner}
+              rangeText={roleLabels.partnerRange}
+              onClick={() => setMode("partner")}
+            />
           </Reveal>
         </Reveal>
 
@@ -120,7 +177,7 @@ export default function Calculator() {
         >
           <Reveal as="div" className="grid gap-8">
             <SliderRow
-              label={t.home.calculator.dailyVolume}
+              label={t.aboutus.calculator.dailyVolume}
               value={dailyVolume}
               min={50}
               max={50000}
@@ -130,7 +187,7 @@ export default function Calculator() {
             />
 
             <SliderRow
-              label={t.home.calculator.workingDays}
+              label={t.aboutus.calculator.workingDays}
               value={workingDays}
               min={1}
               max={31}
@@ -146,12 +203,12 @@ export default function Calculator() {
                 isArabic ? "md:text-right" : "",
               ].join(" ")}
             >
-              {t.home.calculator.estimatedResult}
+              {t.aboutus.calculator.estimatedResult}
             </p>
 
             <div className="mt-10">
               <div className="type-body text-white/60">
-                {t.home.calculator.monthlyIncome}
+                {t.aboutus.calculator.monthlyIncome}
               </div>
               <div
                 dir="ltr"
@@ -165,7 +222,7 @@ export default function Calculator() {
 
             <div className="mt-8">
               <div className="type-body text-white/60">
-                {t.home.calculator.dailyIncome}
+                {t.aboutus.calculator.dailyIncome}
               </div>
               <div dir="ltr" className="type-metric-secondary mt-2 font-bold text-white">
                 ${money.format(dailyIncome)}

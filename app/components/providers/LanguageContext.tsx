@@ -24,14 +24,14 @@ const LanguageContext = createContext<LanguageContextValue | undefined>(
 const STORAGE_KEY = "landing-language";
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguageState] = useState<Language>(() => {
-    if (typeof window === "undefined") {
-      return "en";
-    }
+  const [language, setLanguageState] = useState<Language>("en");
 
+  useEffect(() => {
     const saved = window.localStorage.getItem(STORAGE_KEY) as Language | null;
-    return saved === "en" || saved === "ar" ? saved : "en";
-  });
+    const nextLanguage = saved === "en" || saved === "ar" ? saved : "en";
+
+    setLanguageState(nextLanguage);
+  }, []);
 
   useEffect(() => {
     window.localStorage.setItem(STORAGE_KEY, language);
@@ -40,10 +40,14 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
   }, [language]);
 
+  const setLanguage = (nextLanguage: Language) => {
+    setLanguageState(nextLanguage);
+  };
+
   const value = useMemo<LanguageContextValue>(() => {
     return {
       language,
-      setLanguage: setLanguageState,
+      setLanguage,
       t: getTranslations(language),
       isArabic: language === "ar",
     };

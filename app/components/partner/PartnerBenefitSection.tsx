@@ -1,8 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import { useLanguage } from "../providers/LanguageContext";
 import { Reveal } from "@/lib/Animation/Reveal";
+import Card from "../providers/Card";
 
 export default function PartnerBenefitsSection() {
   const { t } = useLanguage();
@@ -43,32 +43,19 @@ export default function PartnerBenefitsSection() {
           </Reveal>
         </Reveal>
 
-        <Reveal as="div" delay={0.08} stagger={0.08} className="mt-10 grid gap-5 md:grid-cols-2">
+        <Reveal
+          as="div"
+          delay={0.08}
+          stagger={0.08}
+          className="mt-10 grid gap-5 md:grid-cols-2 md:auto-rows-fr"
+        >
           {partnerBenefits.map((item) => (
-            <Reveal
-              key={item.id}
-              as="div"
-              preset="card"
-              className="landing-surface landing-hover rounded-[28px] p-6"
-            >
-              <div className="flex flex-col items-center text-center">
-                <div className="relative mb-5 h-14 w-14 shrink-0">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-
-                <h3 className="type-card-title font-bold text-white">
-                  {item.title}
-                </h3>
-
-                <p className="type-body-lg mt-4 text-white/72">
-                  {item.text}
-                </p>
-              </div>
+            <Reveal key={item.id} as="div" preset="card">
+              <Card
+                image={item.image}
+                title={item.title}
+                text={item.text}
+              />
             </Reveal>
           ))}
         </Reveal>

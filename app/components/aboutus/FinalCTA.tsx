@@ -25,7 +25,7 @@ export default function FinalCTA() {
               as="div"
               className="type-label inline-flex items-center rounded-full border border-[#FFC100]/30 bg-[#FFC100]/10 px-4 py-1.5 font-medium text-[#FFC100]"
             >
-              {t.home.register.badge}
+              {t.aboutus.register.badge}
             </Reveal>
 
             <Reveal
@@ -34,7 +34,7 @@ export default function FinalCTA() {
               delay={0.04}
               className="type-heading mt-5 font-bold text-white"
             >
-              {t.home.register.title}
+              {t.aboutus.register.title}
             </Reveal>
 
             <Reveal
@@ -43,7 +43,7 @@ export default function FinalCTA() {
               delay={0.08}
               className="type-body-lg mx-auto mt-4 max-w-2xl text-white/72"
             >
-              {t.home.register.description}
+              {t.aboutus.register.description}
             </Reveal>
 
             <Reveal
@@ -57,7 +57,7 @@ export default function FinalCTA() {
               >
                 <span className="relative h-5 w-5 shrink-0">
                   <Image
-                    src="/telegram(2).png"
+                    src="/telegram.png"
                     alt="Telegram"
                     fill
                     className="object-contain"
@@ -65,7 +65,7 @@ export default function FinalCTA() {
                 </span>
 
                 <span className="type-label max-w-0 overflow-hidden whitespace-nowrap pl-0 font-bold transition-all duration-300 ease-out group-hover:max-w-[180px] group-hover:pl-3">
-                  {t.home.register.telegram}
+                  {t.aboutus.register.telegram}
                 </span>
               </a>
 
@@ -83,7 +83,7 @@ export default function FinalCTA() {
                 </span>
 
                 <span className="type-label max-w-0 overflow-hidden whitespace-nowrap pl-0 font-bold transition-all duration-300 ease-out group-hover:max-w-[180px] group-hover:pl-3">
-                  {t.home.register.whatsapp}
+                  {t.aboutus.register.whatsapp}
                 </span>
               </a>
             </Reveal>

@@ -20,20 +20,21 @@ export default function AgentHeroSection() {
 
       <div
         dir="ltr"
-        className="relative z-10 mx-auto grid max-w-[1500px] items-start gap-10 px-6 pt-3 pb-8 md:grid-cols-[0.92fr_1.08fr] md:pt-4 md:pb-10 lg:gap-14 lg:pt-5 lg:pb-12"
+        className="relative z-10 mx-auto grid max-w-[1500px] items-start gap-10 px-6 pt-3 pb-8 md:grid-cols-2 md:pt-4 md:pb-10 lg:gap-14 lg:pt-5 lg:pb-12"
       >
         <div
           dir={isArabic ? "rtl" : "ltr"}
           className={[
-            "flex min-w-0 max-w-2xl flex-col pt-0",
-            isArabic ? "order-2 text-right justify-self-end" : "order-1",
+            "flex min-w-0 max-w-2xl flex-col",
+            isArabic ? "order-2" : "order-1",
           ].join(" ")}
         >
           <Reveal
             as="div"
+            delay={0.25}
             className={[
-              "inline-flex w-fit items-center rounded-full border border-[#FFC100]/25 bg-[#FFC100]/10 px-4 py-1.5 text-sm font-medium text-[#FFC100]",
-              isArabic ? "self-end" : "",
+              "mt-8 inline-flex items-center rounded-full border border-[#FFC100]/25 bg-[#FFC100]/10 px-4 py-1.5 text-sm font-medium text-[#FFC100]",
+              isArabic ? "self-start" : "self-start",
             ].join(" ")}
           >
             {t.agent.hero.badge}
@@ -42,8 +43,11 @@ export default function AgentHeroSection() {
           <Reveal
             as="h1"
             preset="text"
-            delay={0.04}
-            className="mt-4 text-4xl font-bold leading-[1.02] text-white sm:text-5xl lg:text-6xl"
+            delay={0.42}
+            className={[
+              "mt-4 text-4xl font-bold leading-[1.02] text-white sm:text-5xl lg:text-6xl",
+              isArabic ? "text-right self-end" : "text-left self-start",
+            ].join(" ")}
           >
             {t.agent.hero.title}
           </Reveal>
@@ -51,10 +55,10 @@ export default function AgentHeroSection() {
           <Reveal
             as="p"
             preset="text"
-            delay={0.08}
+            delay={0.74}
             className={[
-              "mt-6 max-w-xl text-base leading-7 text-white/72 sm:text-lg",
-              isArabic ? "self-end text-right" : "",
+              "mt-8 flex flex-wrap gap-4",
+              isArabic ? "ml-auto justify-end flex-row-reverse" : "mr-auto justify-start",
             ].join(" ")}
           >
             {t.agent.hero.description}
@@ -62,10 +66,12 @@ export default function AgentHeroSection() {
 
           <Reveal
             as="div"
-            delay={0.12}
+            delay={1}
             className={[
               "mt-8 flex flex-wrap gap-4",
-              isArabic ? "justify-end flex-row-reverse self-end" : "",
+              isArabic
+                ? "self-start justify-end"
+                : "self-start justify-start",
             ].join(" ")}
           >
             <Link
@@ -87,14 +93,16 @@ export default function AgentHeroSection() {
         <Reveal
           as="div"
           preset="soft"
-          delay={0.08}
+          delay={1.28}
           className={[
             "relative flex min-w-0 items-start justify-center px-0 pt-0 pb-0",
             isArabic ? "order-1" : "order-2",
           ].join(" ")}
         >
-          <div className="w-full max-w-none origin-top scale-[0.92] lg:scale-[0.98]">
-            <AgentNetwork />
+          <div className="w-full min-w-0 flex-1" dir="ltr">
+            <div className="mx-auto w-full max-w-[980px] origin-top scale-[1.12] lg:scale-[1.2]">
+              <AgentNetwork />
+            </div>
           </div>
 
           <div className="pointer-events-none absolute -left-6 top-4 h-24 w-24 rounded-full bg-[#FFC100]/10 blur-3xl" />

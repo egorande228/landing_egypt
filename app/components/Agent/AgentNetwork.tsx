@@ -50,11 +50,18 @@ const transactionPaths = [
 
 const returnPulsePaths = [
   "M780 118 C 845 118, 860 210, 760 350",
+  "M680 118 C 610 118, 565 195, 500 300",
+  "M320 118 C 390 118, 435 195, 500 300",
   "M220 118 C 155 118, 140 210, 240 350",
 ] as const;
 
 const outerAgentToPlayerPaths = [
   "M240 350 C 140 430, 118 500, 120 570",
+  "M240 350 C 258 430, 270 520, 250 610",
+  "M500 300 C 430 360, 372 450, 380 570",
+  "M500 300 C 500 390, 500 510, 500 620",
+  "M500 300 C 570 360, 628 450, 620 570",
+  "M760 350 C 742 430, 730 520, 750 610",
   "M760 350 C 860 430, 882 500, 880 570",
 ] as const;
 
@@ -89,7 +96,7 @@ function AgentNode({ x, y, label }: { x: number; y: number; label: string }) {
         width="220"
         height="84"
         rx="40"
-        fill="rgba(255,255,255,0.035)"
+        fill="rgba(255,193,0,0.12)"
         stroke="rgba(255,193,0,0.26)"
         strokeWidth="4"
       />
@@ -98,8 +105,8 @@ function AgentNode({ x, y, label }: { x: number; y: number; label: string }) {
         y="8"
         width="204"
         height="68"
-        rx="22"
-        fill="rgba(255,255,255,0.018)"
+        rx="25"
+        fill="rgba(10,8,4,0.78)"
       />
       <image href="/manager.png" x="22" y="24" width="34" height="34" preserveAspectRatio="xMidYMid meet" />
       <text
@@ -137,11 +144,18 @@ function IncomeNode({ x, y, title, value }: { x: number; y: number; title: strin
         width="260"
         height="104"
         rx="30"
-        fill="rgba(255,255,255,0.06)"
+        fill="rgba(255,193,0,0.10)"
         stroke="rgba(255,193,0,0.30)"
         strokeWidth="1.8"
       />
-      <rect x="9" y="9" width="242" height="86" rx="24" fill="rgba(20,14,0,0.42)" />
+      <rect
+        x="9"
+        y="9"
+        width="242"
+        height="86"
+        rx="24"
+        fill="rgba(10,8,4,0.80)"
+      />
       <image href="/teamcash.png" x="22" y="26" width="42" height="42" preserveAspectRatio="xMidYMid meet" />
       <text
         x="84"
@@ -164,10 +178,16 @@ function IncomeNode({ x, y, title, value }: { x: number; y: number; title: strin
 export default function AgentNetwork() {
   const lineGlowMatrix =
     "1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0.95 0";
+
   return (
     <div className="relative">
       <div className="relative aspect-[1000/800] w-full overflow-hidden p-4 sm:p-5">
-        <svg viewBox="0 0 1000 700" className="absolute inset-0 h-full w-full" aria-label="Agent workflow from players to recurring income" role="img">
+        <svg
+          viewBox="0 0 1000 700"
+          className="absolute inset-0 h-full w-full"
+          aria-label="Agent workflow from players to recurring income"
+          role="img"
+        >
           <defs>
             <linearGradient id="playerFlow" x1="0%" y1="100%" x2="0%" y2="0%">
               <stop offset="0%" stopColor="rgba(255,255,255,0.18)" />
@@ -177,11 +197,11 @@ export default function AgentNetwork() {
 
             <filter id="lineGlow" x="-50%" y="-50%" width="200%" height="200%">
               <feGaussianBlur stdDeviation="3.4" result="blur" />
-              <feColorMatrix
-                in="blur"
-                type="matrix"
-                values={lineGlowMatrix}
-              />
+              <feColorMatrix in="blur" type="matrix" values={lineGlowMatrix} />
+            </filter>
+
+            <filter id="panelBlur" x="-30%" y="-30%" width="160%" height="160%">
+              <feGaussianBlur stdDeviation="10" />
             </filter>
           </defs>
 
@@ -343,8 +363,21 @@ export default function AgentNetwork() {
             <g key={path} className="network-transaction" opacity="0">
               <ellipse rx="6.5" ry="5" fill="#FFC100" opacity="0.95" />
               <path d="M-22 0 L-7 -3.6 L-2.4 0 L-7 3.6 Z" fill="#FFD75A" opacity="0.92" />
-              <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.08;0.16;0.86;1" dur="4.6s" begin={`${1.2 + index * 1.1}s`} repeatCount="indefinite" />
-              <animateMotion dur="4.6s" begin={`${1.2 + index * 1.1}s`} repeatCount="indefinite" rotate="auto" path={path} />
+              <animate
+                attributeName="opacity"
+                values="0;0;1;1;0"
+                keyTimes="0;0.08;0.16;0.86;1"
+                dur="4.6s"
+                begin={`${1.2 + index * 0.8}s`}
+                repeatCount="indefinite"
+              />
+              <animateMotion
+                dur="4.6s"
+                begin={`${1.2 + index * 0.8}s`}
+                repeatCount="indefinite"
+                rotate="auto"
+                path={path}
+              />
             </g>
           ))}
 
@@ -352,8 +385,21 @@ export default function AgentNetwork() {
             <g key={`outer-player-pulse-${path}`} className="network-transaction" opacity="0">
               <ellipse rx="6.5" ry="5" fill="#FFC100" opacity="0.95" />
               <path d="M-22 0 L-7 -3.6 L-2.4 0 L-7 3.6 Z" fill="#FFD75A" opacity="0.92" />
-              <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.08;0.16;0.86;1" dur="4.8s" begin={`${2 + index * 1.2}s`} repeatCount="indefinite" />
-              <animateMotion dur="4.8s" begin={`${2 + index * 1.2}s`} repeatCount="indefinite" rotate="auto" path={path} />
+              <animate
+                attributeName="opacity"
+                values="0;0;1;1;0"
+                keyTimes="0;0.08;0.16;0.86;1"
+                dur="4.8s"
+                begin={`${2 + index * 1.2}s`}
+                repeatCount="indefinite"
+              />
+              <animateMotion
+                dur="4.8s"
+                begin={`${2 + index * 1.2}s`}
+                repeatCount="indefinite"
+                rotate="auto"
+                path={path}
+              />
             </g>
           ))}
 

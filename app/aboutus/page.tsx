@@ -4,7 +4,7 @@ import FinalCTA from "../components/aboutus/FinalCTA";
 import Hero from "../components/aboutus/Hero";
 export default function AboutUsPage() {
   return (
-    <main className="flex flex-1 flex-col">
+    <main className="flex flex-col">
       <Hero />
       <Calculator />
       <Benefits />
