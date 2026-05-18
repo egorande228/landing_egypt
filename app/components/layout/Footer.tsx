@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { AnimatedMarketLogo } from "../../../../designPlayGround/components/logo";
+import { AnimatedMarketLogo } from "../logo";
 import { useLanguage } from "../providers/LanguageContext";
 import { getLandingPlayerHomeContent } from "@/lib/player-home";
 
@@ -42,7 +42,7 @@ export default function Footer() {
               <Link href="/" className="inline-flex" aria-label="Melbet">
                 <AnimatedMarketLogo
                   ariaLabel="Melbet"
-                  preset="footer"
+                  preset="landing"
                   variantPool={["idle"]}
                   wrapperClassName="inline-flex"
                 />

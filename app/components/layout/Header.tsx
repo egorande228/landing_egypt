@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { AnimatedMarketLogo } from "../../../../designPlayGround/components/logo";
+import { AnimatedMarketLogo } from "../logo";
 import { useLanguage } from "../providers/LanguageContext";
 
 const languages = [
@@ -99,7 +99,7 @@ export default function Header() {
               <Link href="/" className="shrink-0" aria-label="Melbet">
                 <AnimatedMarketLogo
                   ariaLabel="Melbet"
-                  preset="header"
+                  preset="landing"
                   variantPool={["idle"]}
                   wrapperClassName="inline-flex"
                 />
