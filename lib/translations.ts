@@ -69,7 +69,7 @@ export const translations = {
         description:
           "Reach out directly and we will guide you through the next step. your future is waiting, what are you waiting for?",
         telegram: "Contact on Telegram",
-        whatsapp: "Contact on WhatsApp",
+        whatsapp: "Contact by Mail",
         step1Title: "Send your request",
         step1Text: "Contact us through the direct channel that suits you best.",
         step2Title: "Get your onboarding details",
@@ -267,7 +267,7 @@ export const translations = {
         description:
           "تواصل معنا مباشرة وسنرشدك إلى الخطوة التالية. مستقبلك في الأنتظار, ما الذي تنتظره أنت؟.",
         telegram: "تواصل عبر تيليجرام",
-        whatsapp: "تواصل عبر واتساب",
+        whatsapp: "تواصل عبر البريد",
         step1Title: "أرسل طلبك",
         step1Text: "تواصل معنا عبر القناة المباشرة التي تناسبك.",
         step2Title: "احصل على تفاصيل البدء",

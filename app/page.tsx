@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useLanguage } from "./components/providers/LanguageContext";
 import { getLandingPlayerHomeContent } from "@/lib/player-home";
+import { CASINO_REF_LINK, SPORT_REF_LINK } from "@/lib/links";
 
 function SectionHeading({
   eyebrow,
@@ -96,13 +97,17 @@ export default function HomePage() {
 
                 <div className="mt-6 flex flex-wrap gap-3">
                   <Link
-                    href="/#games"
+                    href={CASINO_REF_LINK}
+                    target="_blank"
+                    rel="noreferrer"
                     className="landing-button-primary rounded-full px-6 py-3 text-sm font-bold"
                   >
                     {content.hero.primary}
                   </Link>
                   <Link
-                    href="/#offers"
+                    href={CASINO_REF_LINK}
+                    target="_blank"
+                    rel="noreferrer"
                     className="landing-button-secondary rounded-full px-6 py-3 text-sm font-bold"
                   >
                     {content.hero.secondary}
@@ -179,7 +184,13 @@ export default function HomePage() {
           <SectionHeading eyebrow={content.games.eyebrow} title={content.games.title} body={content.games.body} />
           <div className="mt-8 grid gap-4 lg:grid-cols-3">
             {content.games.cards.map((card) => (
-              <article key={card.title} className="landing-surface landing-hover group rounded-[30px] overflow-hidden">
+              <Link
+                key={card.title}
+                href={CASINO_REF_LINK}
+                target="_blank"
+                rel="noreferrer"
+                className="landing-surface landing-hover group block rounded-[30px] overflow-hidden"
+              >
                 <div className="relative aspect-[4/3]">
                   <SmartVisual
                     src={card.image}
@@ -200,7 +211,7 @@ export default function HomePage() {
                   <h3 className="type-card-title font-bold text-white">{card.title}</h3>
                   <p className="type-body text-white/72">{card.body}</p>
                 </div>
-              </article>
+              </Link>
             ))}
           </div>
         </div>
@@ -210,7 +221,12 @@ export default function HomePage() {
         <div className="container-main">
           <SectionHeading eyebrow={content.sports.eyebrow} title={content.sports.title} body={content.sports.body} />
           <div className="mt-8 grid gap-4 lg:grid-cols-[1.08fr_0.92fr]">
-            <article className="landing-surface landing-hover group relative min-h-[420px] overflow-hidden rounded-[32px]">
+            <Link
+              href={SPORT_REF_LINK}
+              target="_blank"
+              rel="noreferrer"
+              className="landing-surface landing-hover group relative block min-h-[420px] overflow-hidden rounded-[32px]"
+            >
               <SmartVisual
                 src={content.sports.lead.image}
                 alt={content.sports.lead.title}
@@ -225,11 +241,17 @@ export default function HomePage() {
                 <h3 className="type-card-title mt-3 font-bold text-white">{content.sports.lead.title}</h3>
                 <p className="type-body mt-3 max-w-xl text-white/72">{content.sports.lead.body}</p>
               </div>
-            </article>
+            </Link>
 
             <div className="grid gap-4">
               {content.sports.rails.map((card) => (
-                <article key={card.title} className="landing-surface landing-hover group overflow-hidden rounded-[28px]">
+                <Link
+                  key={card.title}
+                  href={SPORT_REF_LINK}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="landing-surface landing-hover group block overflow-hidden rounded-[28px]"
+                >
                   <div className="grid min-h-[156px] gap-0 sm:grid-cols-[176px_1fr]">
                     <div className="relative min-h-[164px] sm:min-h-full">
                       <SmartVisual
@@ -254,7 +276,7 @@ export default function HomePage() {
                       </div>
                     </div>
                   </div>
-                </article>
+                </Link>
               ))}
             </div>
           </div>
@@ -266,7 +288,13 @@ export default function HomePage() {
           <SectionHeading eyebrow={content.offers.eyebrow} title={content.offers.title} body={content.offers.body} />
           <div className="mt-8 grid gap-4 lg:grid-cols-3">
             {content.offers.cards.map((card) => (
-              <article key={card.title} className="landing-surface-accent landing-hover group overflow-hidden rounded-[30px]">
+              <Link
+                key={card.title}
+                href={CASINO_REF_LINK}
+                target="_blank"
+                rel="noreferrer"
+                className="landing-surface-accent landing-hover group block overflow-hidden rounded-[30px]"
+              >
                 <div className="relative aspect-[4/3]">
                   <SmartVisual
                     src={card.image}
@@ -287,7 +315,7 @@ export default function HomePage() {
                   <h3 className="type-card-title font-bold text-white">{card.title}</h3>
                   <p className="type-body text-white/72">{card.body}</p>
                 </div>
-              </article>
+              </Link>
             ))}
           </div>
         </div>

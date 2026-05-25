@@ -1,4 +1,5 @@
 import type { Language } from "@/lib/translations";
+import { MAIL_LINK, TELEGRAM_LINK } from "@/lib/links";
 
 type HomeCard = {
   eyebrow: string;
@@ -195,11 +196,11 @@ const homeContent: Record<Language, HomeContent> = {
     finalCta: {
       eyebrow: "Support",
       title: "Need help before you start or while you play?",
-      body: "Message the support team on Telegram or WhatsApp for quick help with getting started, games, or available offers.",
+      body: "Message the support team on Telegram or mail for quick help with getting started, games, or available offers.",
       primary: "Telegram",
-      primaryHref: "https://t.me/your_channel",
-      secondary: "WhatsApp",
-      secondaryHref: "https://wa.me/your_number",
+      primaryHref: TELEGRAM_LINK,
+      secondary: "Mail",
+      secondaryHref: MAIL_LINK,
     },
     footer: {
       body: "Live sports, casino games, clear offers, and direct support in one place.",
@@ -343,11 +344,11 @@ const homeContent: Record<Language, HomeContent> = {
     finalCta: {
       eyebrow: "الدعم",
       title: "تحتاج مساعدة قبل أن تبدأ أو أثناء اللعب؟",
-      body: "راسل فريق الدعم عبر تيليجرام أو واتساب لتحصل على رد سريع حول البداية أو الألعاب أو العروض المتاحة.",
+      body: "راسل فريق الدعم عبر تيليجرام أو البريد لتحصل على رد سريع حول البداية أو الألعاب أو العروض المتاحة.",
       primary: "تيليجرام",
-      primaryHref: "https://t.me/your_channel",
-      secondary: "واتساب",
-      secondaryHref: "https://wa.me/your_number",
+      primaryHref: TELEGRAM_LINK,
+      secondary: "Mail",
+      secondaryHref: MAIL_LINK,
     },
     footer: {
       body: "رياضة مباشرة، ألعاب كازينو، عروض واضحة، ودعم سريع في مكان واحد.",

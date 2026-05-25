@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useLanguage } from "../providers/LanguageContext";
 import { Reveal } from "@/lib/Animation/Reveal";
+import { MAIL_LINK, TELEGRAM_LINK } from "@/lib/links";
 
 export default function FinalCTA() {
   const { t, isArabic } = useLanguage();
@@ -52,7 +53,9 @@ export default function FinalCTA() {
               className="mt-8 flex flex-wrap items-center justify-center gap-4"
             >
               <a
-                href="#"
+                href={TELEGRAM_LINK}
+                target="_blank"
+                rel="noreferrer"
                 className="group inline-flex h-[60px] items-center overflow-hidden rounded-full border border-[#FFC100]/30 bg-[#FFC100]/10 px-5 text-[#FFC100] shadow-[0_10px_30px_rgba(255,193,0,0.12)] transition-all duration-300 ease-out hover:border-[#FFC100]/55 hover:bg-[#FFC100] hover:text-black hover:shadow-[0_14px_36px_rgba(255,193,0,0.22)]"
               >
                 <span className="relative h-5 w-5 shrink-0">
@@ -70,13 +73,13 @@ export default function FinalCTA() {
               </a>
 
               <a
-                href="#"
-                className="group inline-flex h-[60px] items-center overflow-hidden rounded-full border border-white/12 bg-white/5 px-5 text-white transition-all duration-300 ease-out hover:border-[#25D366]/50 hover:bg-[#25D366] hover:text-black hover:shadow-[0_14px_36px_rgba(37,211,102,0.22)]"
+                href={MAIL_LINK}
+                className="group inline-flex h-[60px] items-center overflow-hidden rounded-full border border-white/12 bg-white/5 px-5 text-white transition-all duration-300 ease-out hover:border-[#7CF0FF]/50 hover:bg-[#7CF0FF] hover:text-black hover:shadow-[0_14px_36px_rgba(124,240,255,0.2)]"
               >
                 <span className="relative h-5 w-5 shrink-0">
                   <Image
-                    src="/whatsapp.png"
-                    alt="WhatsApp"
+                    src="/support.png"
+                    alt="Mail"
                     fill
                     className="object-contain"
                   />

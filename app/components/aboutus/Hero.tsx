@@ -3,9 +3,9 @@
 import { useLanguage } from "../providers/LanguageContext";
 import { Reveal } from "@/lib/Animation/Reveal";
 import HeroStage from "./HeroStage/HeroStage";
+import { SPORT_REF_LINK } from "@/lib/links";
 
 export default function Hero() {
-  const siteHref = "https://refpa3665.com/L?tag=d_5002529m_2170c_MIKEMEL";
   const { t, isArabic } = useLanguage();
 
   return (
@@ -98,7 +98,7 @@ export default function Hero() {
             </div>
 
             <a
-              href={siteHref}
+              href={SPORT_REF_LINK}
               target="_blank"
               rel="noopener noreferrer"
               className="melbet-button landing-button-primary mt-[var(--space-4)] inline-flex min-w-[132px] items-center justify-center rounded-full px-[var(--space-4)] py-[10px] text-[0.72rem] font-bold uppercase tracking-[0.1em] transition hover:-translate-y-0.5 hover:opacity-95 md:type-label md:mt-[var(--space-8)] md:min-w-[220px] md:px-[var(--space-7)] md:py-[var(--space-4)] md:tracking-[0.12em]"

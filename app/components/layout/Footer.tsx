@@ -26,7 +26,7 @@ export default function Footer() {
 
   const supportLinks = [
     { href: home.finalCta.primaryHref, key: "telegram", icon: "/telegram.png", label: home.finalCta.primary },
-    { href: home.finalCta.secondaryHref, key: "whatsapp", icon: "/whatsapp.png", label: home.finalCta.secondary },
+    { href: home.finalCta.secondaryHref, key: "mail", icon: "/support.png", label: home.finalCta.secondary },
   ] as const;
 
   return (
