@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useLanguage } from "./components/providers/LanguageContext";
 import { getLandingPlayerHomeContent } from "@/lib/player-home";
-import { CASINO_REF_LINK, SPORT_REF_LINK } from "@/lib/links";
+import { CASINO_REF_LINK, MAIL_LINK, SPORT_REF_LINK, TELEGRAM_LINK } from "@/lib/links";
 
 function SectionHeading({
   eyebrow,
@@ -112,6 +112,28 @@ export default function HomePage() {
                   >
                     {content.hero.secondary}
                   </Link>
+                </div>
+
+                <div className="mt-5 w-full max-w-[360px] rounded-[18px] border border-white/10 bg-white/[0.04] p-3 shadow-[0_14px_36px_rgba(0,0,0,0.18)] backdrop-blur">
+                  <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/48">
+                    For partnership contact
+                  </p>
+                  <div className="grid grid-cols-2 gap-2">
+                    <a
+                      href={TELEGRAM_LINK}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex min-h-[42px] items-center justify-center rounded-[14px] border border-white/10 bg-white/[0.06] px-4 text-[14px] font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white/[0.09]"
+                    >
+                      Telegram
+                    </a>
+                    <a
+                      href={MAIL_LINK}
+                      className="inline-flex min-h-[42px] items-center justify-center rounded-[14px] border border-white/10 bg-white/[0.06] px-4 text-[14px] font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white/[0.09]"
+                    >
+                      Mail
+                    </a>
+                  </div>
                 </div>
 
                 <div className="mt-6 flex flex-wrap gap-3">
